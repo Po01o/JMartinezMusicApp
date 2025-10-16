@@ -20,8 +20,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.example.musicapp.models.Album
 import com.example.musicapp.ui.theme.MusicAppTheme
@@ -34,25 +36,35 @@ fun RecentlyPlayedCard(
     Row (
         modifier = Modifier
             .fillMaxWidth()
+            .padding(vertical = 5.dp)
             .clip(RoundedCornerShape(10.dp))
             .background(Color.White)
-            .padding(10.dp),
+            .padding(15.dp),
         verticalAlignment = Alignment.CenterVertically
     ){
         AsyncImage(
             model = album.image,
             contentDescription = album.title,
             modifier = Modifier
-                .size(50.dp)
+                .size(60.dp)
                 .clip(RoundedCornerShape(10.dp))
-                .background(Color.White)
+                .background(Color(0xFFFAF8FF))
         )
-        Column {
+        Column(
+            modifier = Modifier
+                .padding(start = 15.dp)
+        ) {
             Text(
-                text = album.title
+                text = album.title,
+                color = Color.Black,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold
             )
             Text(
-                text = album.artist + " · " + album.description
+                text = album.artist + " · Popular Song",
+                color = Color.Gray,
+                fontSize = 15.sp,
+                fontWeight = FontWeight.SemiBold
             )
         }
         Spacer(modifier = Modifier.weight(1f))

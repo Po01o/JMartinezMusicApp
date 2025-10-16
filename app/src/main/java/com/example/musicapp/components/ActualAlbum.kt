@@ -20,8 +20,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.example.musicapp.models.Album
 import com.example.musicapp.ui.theme.MusicAppTheme
@@ -33,32 +35,43 @@ fun ActualAlbum(
     Row (
         modifier = Modifier
             .fillMaxWidth()
+            .padding(horizontal = 20.dp)
+            .padding(bottom = 30.dp)
             .clip(RoundedCornerShape(10.dp))
-            .background(Color.Magenta)
-            .padding(10.dp),
+            .background(Color(0xFF260F44))
+            .padding(15.dp),
         verticalAlignment = Alignment.CenterVertically
     ){
         AsyncImage(
             model = album.image,
             contentDescription = album.title,
             modifier = Modifier
-                .size(50.dp)
+                .size(60.dp)
                 .clip(RoundedCornerShape(10.dp))
-                .background(Color.White)
+                .background(Color(0xFFFAF8FF))
         )
-        Column {
+        Column(
+            modifier = Modifier
+                .padding(start = 15.dp)
+        ) {
             Text(
-                text = album.title
+                text = album.title,
+                color = Color.White,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold
             )
             Text(
-                text = album.artist + " · " + album.description
+                text = album.artist + " · Popular Song",
+                color = Color.LightGray,
+                fontSize = 15.sp,
+                fontWeight = FontWeight.SemiBold
             )
         }
         Spacer(modifier = Modifier.weight(1f))
         Icon(
             imageVector = Icons.Default.PlayArrow,
             contentDescription = "play",
-            tint = Color.White
+            tint = Color.Gray
         )
     }
 }

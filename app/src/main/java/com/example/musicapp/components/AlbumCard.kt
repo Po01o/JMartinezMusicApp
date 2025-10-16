@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -35,7 +36,8 @@ fun AlbumCard(
     onClick : () -> Unit){
     Box(
         modifier = Modifier
-            .size(150.dp)
+            .padding(horizontal = 5.dp)
+            .size(200.dp)
             .clip(RoundedCornerShape(10.dp))
             .clickable() {
                 onClick()
@@ -45,7 +47,7 @@ fun AlbumCard(
             model = album.image,
             contentDescription = album.title,
             modifier = Modifier
-                .size(150.dp)
+                .fillMaxSize()
                 .background(Color.White)
         )
         Column {

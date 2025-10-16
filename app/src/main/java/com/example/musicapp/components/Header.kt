@@ -20,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
@@ -36,8 +37,17 @@ fun Header(){
     Column(
         modifier = Modifier
             .fillMaxWidth()
+            .padding(horizontal = 20.dp)
+            .padding(vertical = 30.dp)
             .clip(RoundedCornerShape(20.dp))
-            .background(Color.Magenta)
+            .background(
+                brush = Brush.verticalGradient(
+                    colors = listOf(
+                        Color(0xFF946CF6),
+                        Color(0xFF744BF5)
+                    )
+                )
+            )
             .padding(20.dp)
     ){
         Row(

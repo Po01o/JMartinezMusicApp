@@ -5,7 +5,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -33,6 +35,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -104,15 +107,42 @@ fun HomeScreen(
     }
     else
     {
-        Text("Si cargan")
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color.Gray)
+                .background(
+                    brush = Brush.verticalGradient(
+                        colors = listOf(
+                            Color(0xFFE0D6FC),
+                            Color(0xFFFFFFFF)
+                        )//#744BF5
+                    )
+                )
         ) {
             Header()
-            Text("Albums")
-            LazyRow {
+            Row(
+                modifier = Modifier
+                    .padding(horizontal = 20.dp)
+                    .padding(bottom = 10.dp),
+                verticalAlignment = Alignment.Bottom
+            ) {
+                Text(
+                    text = "Albums",
+                    color = Color.Black,
+                    fontSize = 25.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Spacer(modifier = Modifier.weight(1f))
+                Text(
+                    text = "See more",
+                    color = Color(0xFF744BF5),
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.SemiBold
+                )
+            }
+            LazyRow(
+                contentPadding = PaddingValues(horizontal = 15.dp)
+            ) {
                 items(albums){ album ->
                     AlbumCard(
                         album = album,
@@ -122,8 +152,31 @@ fun HomeScreen(
                     )
                 }
             }
-            Text("Recently Played")
-            LazyColumn {
+            Row(
+                modifier = Modifier
+                    .padding(horizontal = 20.dp)
+                    .padding(vertical = 10.dp),
+                verticalAlignment = Alignment.Bottom
+            ) {
+                Text(
+                    text = "Recently Played",
+                    color = Color.Black,
+                    fontSize = 25.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Spacer(modifier = Modifier.weight(1f))
+                Text(
+                    text = "See more",
+                    color = Color(0xFF744BF5),
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.SemiBold
+                )
+            }
+            LazyColumn(
+                modifier = Modifier
+                    .padding(horizontal = 20.dp)
+                    .weight(1f)
+            ) {
                 items(albums){ album ->
                     RecentlyPlayedCard(
                         album = album,
