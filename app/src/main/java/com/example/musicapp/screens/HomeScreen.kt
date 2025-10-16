@@ -10,8 +10,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -39,6 +42,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil3.compose.AsyncImage
+import com.example.musicapp.components.ActualAlbum
+import com.example.musicapp.components.AlbumCard
+import com.example.musicapp.components.Header
+import com.example.musicapp.components.RecentlyPlayedCard
 import com.example.musicapp.models.Album
 import com.example.musicapp.services.AlbumService
 import com.example.musicapp.ui.theme.MusicAppTheme
@@ -98,6 +105,41 @@ fun HomeScreen(
     else
     {
         Text("Si cargan")
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Gray)
+        ) {
+            Header()
+            Text("Albums")
+            LazyRow {
+                items(albums){ album ->
+                    AlbumCard(
+                        album = album,
+                        onClick = {
+
+                        }
+                    )
+                }
+            }
+            Text("Recently Played")
+            LazyColumn {
+                items(albums){ album ->
+                    RecentlyPlayedCard(
+                        album = album,
+                        onClick = {
+
+                        }
+                    )
+                }
+            }
+            ActualAlbum(
+                album = albums[0],
+                onClick = {
+
+                }
+            )
+        }
     }
 
 }
