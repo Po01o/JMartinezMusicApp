@@ -38,7 +38,7 @@ fun Header(){
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 20.dp)
-            .padding(vertical = 30.dp)
+            .padding(top = 45.dp)
             .clip(RoundedCornerShape(20.dp))
             .background(
                 brush = Brush.verticalGradient(

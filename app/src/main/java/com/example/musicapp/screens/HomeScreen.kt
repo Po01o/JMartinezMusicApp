@@ -119,79 +119,111 @@ fun HomeScreen(
                     )
                 )
         ) {
-            Header()
-            Row(
+            Box(
                 modifier = Modifier
-                    .padding(horizontal = 20.dp)
-                    .padding(bottom = 10.dp),
-                verticalAlignment = Alignment.Bottom
+                    .fillMaxSize()
             ) {
-                Text(
-                    text = "Albums",
-                    color = Color.Black,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Bold
-                )
-                Spacer(modifier = Modifier.weight(1f))
-                Text(
-                    text = "See more",
-                    color = Color(0xFF744BF5),
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.SemiBold
-                )
-            }
-            LazyRow(
-                contentPadding = PaddingValues(horizontal = 15.dp)
-            ) {
-                items(albums){ album ->
-                    AlbumCard(
-                        album = album,
+                LazyColumn(
+                    modifier = Modifier
+                        .padding(top = 115.dp)
+                        .padding(bottom = 90.dp),
+                    contentPadding = PaddingValues(bottom = 50.dp)
+                ) {
+                    item {
+                        Row(
+                            modifier = Modifier
+                                .padding(horizontal = 20.dp)
+                                .padding(bottom = 10.dp, top = 70.dp),
+                            verticalAlignment = Alignment.Bottom
+                        ) {
+                            Text(
+                                text = "Albums",
+                                color = Color.Black,
+                                fontSize = 25.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Spacer(modifier = Modifier.weight(1f))
+                            Text(
+                                text = "See more",
+                                color = Color(0xFF744BF5),
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.SemiBold
+                            )
+                        }
+                        LazyRow(
+                            contentPadding = PaddingValues(horizontal = 15.dp)
+                        ) {
+                            items(albums) { album ->
+                                AlbumCard(
+                                    album = album,
+                                    onClick = {
+
+                                    }
+                                )
+                            }
+                        }
+                    }
+                    item {
+                        Row(
+                            modifier = Modifier
+                                .padding(horizontal = 20.dp)
+                                .padding(vertical = 10.dp),
+                            verticalAlignment = Alignment.Bottom
+                        ) {
+                            Text(
+                                text = "Recently Played",
+                                color = Color.Black,
+                                fontSize = 25.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Spacer(modifier = Modifier.weight(1f))
+                            Text(
+                                text = "See more",
+                                color = Color(0xFF744BF5),
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.SemiBold
+                            )
+                        }
+                    }
+                    /*LazyColumn(
+                            modifier = Modifier
+                                .padding(horizontal = 20.dp)
+                        ) {*/
+                    items(albums) { album ->
+                        RecentlyPlayedCard(
+                            album = album,
+                            onClick = {
+
+                            }
+                        )
+                    }
+                }
+                Column(){
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(
+                                brush = Brush.verticalGradient(
+                                    colorStops = arrayOf(
+                                        0.0f to Color(0xFFE0D6FC),
+                                        0.7f to Color(0xFFE0D6FC),
+                                        1.0f to Color.Transparent
+                                    )
+                                )
+                            )
+                    ) {
+                        Header()
+                    }
+                    Spacer(modifier = Modifier.weight(1f))
+                    ActualAlbum(
+
+                        album = albums[0],
                         onClick = {
 
                         }
                     )
                 }
             }
-            Row(
-                modifier = Modifier
-                    .padding(horizontal = 20.dp)
-                    .padding(vertical = 10.dp),
-                verticalAlignment = Alignment.Bottom
-            ) {
-                Text(
-                    text = "Recently Played",
-                    color = Color.Black,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Bold
-                )
-                Spacer(modifier = Modifier.weight(1f))
-                Text(
-                    text = "See more",
-                    color = Color(0xFF744BF5),
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.SemiBold
-                )
-            }
-            LazyColumn(
-                modifier = Modifier
-                    .padding(horizontal = 20.dp)
-                    .weight(1f)
-            ) {
-                items(albums){ album ->
-                    RecentlyPlayedCard(
-                        album = album,
-                        onClick = {
-
-                        }
-                    )
-                }
-            }
-            ActualAlbum(
-                album = albums[0],
-                onClick = {
-
-                }
-            )
         }
     }
 
