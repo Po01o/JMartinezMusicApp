@@ -36,7 +36,8 @@ import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.example.musicapp.models.Album
 import com.example.musicapp.ui.theme.MusicAppTheme
-
+import com.example.musicapp.ui.theme.Pause
+import com.example.musicapp.ui.theme.SkipForward
 
 
 @Composable
@@ -143,7 +144,7 @@ fun AlbumSelected(
                         .padding(15.dp)
                 )
                 Icon(
-                    imageVector = Icons.Default.PlayArrow,
+                    imageVector = SkipForward,
                     contentDescription = "skip",
                     tint = Color(0xFF744BF5),
                     modifier = Modifier

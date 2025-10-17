@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.example.musicapp.models.Album
 import com.example.musicapp.ui.theme.MusicAppTheme
+import com.example.musicapp.ui.theme.Pause
 
 @Composable
 fun ActualAlbum(
@@ -83,7 +84,7 @@ fun ActualAlbum(
         }
         Spacer(modifier = Modifier.weight(1f))
         Icon(
-            imageVector = if(icon) Icons.Default.PlayArrow else Icons.Default.Clear,
+            imageVector = if(icon) Icons.Default.PlayArrow else Pause,
             contentDescription = "play",
             tint = Color(0xFF260F44),
             modifier = Modifier
