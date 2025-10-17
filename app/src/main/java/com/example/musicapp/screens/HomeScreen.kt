@@ -51,6 +51,7 @@ import com.example.musicapp.components.Header
 import com.example.musicapp.components.RecentlyPlayedCard
 import com.example.musicapp.models.Album
 import com.example.musicapp.services.AlbumService
+import com.example.musicapp.ui.theme.AlbumDetailScreenRoute
 import com.example.musicapp.ui.theme.MusicAppTheme
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -114,8 +115,8 @@ fun HomeScreen(
                     brush = Brush.verticalGradient(
                         colors = listOf(
                             Color(0xFFE0D6FC),
-                            Color(0xFFFFFFFF)
-                        )//#744BF5
+                            Color(0xFFF4F0FE)
+                        )
                     )
                 )
         ) {
@@ -157,7 +158,7 @@ fun HomeScreen(
                                 AlbumCard(
                                     album = album,
                                     onClick = {
-
+                                        navController.navigate(AlbumDetailScreenRoute(album.id))
                                     }
                                 )
                             }
@@ -193,7 +194,7 @@ fun HomeScreen(
                         RecentlyPlayedCard(
                             album = album,
                             onClick = {
-
+                                navController.navigate(AlbumDetailScreenRoute(album.id))
                             }
                         )
                     }
@@ -216,10 +217,10 @@ fun HomeScreen(
                     }
                     Spacer(modifier = Modifier.weight(1f))
                     ActualAlbum(
-
                         album = albums[0],
                         onClick = {
-
+                            //navController.navigate(AlbumDetailScreenRoute(albums[0].id))
+                            navController.navigate(AlbumDetailScreenRoute(albums[0].id))
                         }
                     )
                 }

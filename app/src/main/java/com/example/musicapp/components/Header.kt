@@ -57,19 +57,19 @@ fun Header(){
             Icon(
                 imageVector = Icons.Default.Menu,
                 contentDescription = "search",
-                tint = Color.White
+                tint = Color(0xFFFAF8FF)
             )
             Spacer(modifier = Modifier.weight(1f))
             Icon(
                 imageVector = Icons.Default.Search,
                 contentDescription = "search",
-                tint = Color.White
+                tint = Color(0xFFFAF8FF)
             )
         }
         Text(
             text = "Good Morning!",
             fontSize = 20.sp,
-            color = Color.LightGray,
+            color = Color(0xFFFAF8FF),
             fontWeight = FontWeight.Bold
         )
         Text(

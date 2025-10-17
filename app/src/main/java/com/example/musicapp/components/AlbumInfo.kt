@@ -1,18 +1,15 @@
 package com.example.musicapp.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,61 +28,38 @@ import com.example.musicapp.ui.theme.MusicAppTheme
 
 
 @Composable
-fun RecentlyPlayedCard(
+fun AlbumInfo(
     album: Album,
     onClick : () -> Unit){
-    Row (
+    Column(
         modifier = Modifier
-            .clickable() {
-                onClick()
-            }
             .fillMaxWidth()
             .padding(vertical = 5.dp)
             .padding(horizontal = 20.dp)
-            .clip(RoundedCornerShape(10.dp))
+            .padding(top = 15.dp)
+            .clip(RoundedCornerShape(30.dp))
             .background(Color.White)
-            .padding(15.dp)
-            ,
-        verticalAlignment = Alignment.CenterVertically
-    ){
-        AsyncImage(
-            model = album.image,
-            contentDescription = album.title,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .size(60.dp)
-                .clip(RoundedCornerShape(10.dp))
-                .background(Color(0xFFFAF8FF))
+            .padding(start = 15.dp)
+            .padding(15.dp),
+    ) {
+        Text(
+            text = "About this album",
+            color = Color(0xFF48217f),
+            fontSize = 25.sp,
+            fontWeight = FontWeight.Bold
         )
-        Column(
-            modifier = Modifier
-                .padding(start = 15.dp)
-        ) {
-            Text(
-                text = album.title,
-                color = Color.Black,
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold
-            )
-            Text(
-                text = album.artist + " · Popular Song",
-                color = Color.Gray,
-                fontSize = 15.sp,
-                fontWeight = FontWeight.SemiBold
-            )
-        }
-        Spacer(modifier = Modifier.weight(1f))
-        Icon(
-            imageVector = Icons.Default.MoreVert,
-            contentDescription = "play",
-            tint = Color.Gray
+        Text(
+            text = album.description,
+            color = Color.Gray,
+            fontSize = 20.sp,
+            fontWeight = FontWeight.SemiBold
         )
     }
 }
 
 @Preview
 @Composable
-fun RecentlyPlayedCardView(){
+fun AlbumInfoView(){
     val testAlbum = Album(
         id = "abc",
         title = "titulo",
@@ -94,7 +68,7 @@ fun RecentlyPlayedCardView(){
         image = "https://ejemplo.com/camiseta.png",
     )
     MusicAppTheme {
-        RecentlyPlayedCard(
+        AlbumInfo(
             album = testAlbum,
             onClick = {  }
         )

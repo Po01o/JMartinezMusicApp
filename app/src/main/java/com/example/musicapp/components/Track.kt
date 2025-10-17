@@ -1,27 +1,18 @@
 package com.example.musicapp.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -36,22 +27,17 @@ import com.example.musicapp.models.Album
 import com.example.musicapp.ui.theme.MusicAppTheme
 
 @Composable
-fun ActualAlbum(
+fun Track(
     album: Album,
+    trackNum: Int,
     onClick : () -> Unit){
-    var icon by remember {
-        mutableStateOf(true)
-    }
     Row (
         modifier = Modifier
-            .clickable() {
-                onClick()
-            }
             .fillMaxWidth()
+            .padding(vertical = 5.dp)
             .padding(horizontal = 20.dp)
-            .padding(bottom = 30.dp)
-            .clip(RoundedCornerShape(10.dp))
-            .background(Color(0xFF260F44))
+            .clip(RoundedCornerShape(30.dp))
+            .background(Color.White)
             .padding(15.dp),
         verticalAlignment = Alignment.CenterVertically
     ){
@@ -69,38 +55,30 @@ fun ActualAlbum(
                 .padding(start = 15.dp)
         ) {
             Text(
-                text = album.title,
-                color = Color.White,
+                text = album.title + " · Track " + trackNum,
+                color = Color.Black,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
             )
             Text(
                 text = album.artist,
-                color = Color.LightGray,
+                color = Color.Gray,
                 fontSize = 15.sp,
                 fontWeight = FontWeight.SemiBold
             )
         }
         Spacer(modifier = Modifier.weight(1f))
         Icon(
-            imageVector = if(icon) Icons.Default.PlayArrow else Icons.Default.Clear,
+            imageVector = Icons.Default.MoreVert,
             contentDescription = "play",
-            tint = Color(0xFF260F44),
-            modifier = Modifier
-                .clip(CircleShape)
-                .clickable() {
-                    icon = !icon
-                }
-                .background(Color.White)
-                .size(40.dp)
-                .padding(5.dp)
+            tint = Color.Gray
         )
     }
 }
 
 @Preview
 @Composable
-fun ActualAlbumView(){
+fun TrackView(){
     val testAlbum = Album(
         id = "abc",
         title = "titulo",
@@ -109,8 +87,9 @@ fun ActualAlbumView(){
         image = "https://ejemplo.com/camiseta.png",
     )
     MusicAppTheme {
-        ActualAlbum(
+        Track (
             album = testAlbum,
+            trackNum =  1,
             onClick = {  }
         )
     }
